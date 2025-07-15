@@ -7,6 +7,8 @@ MAX_PIXEL_VALUE = 255
 
 filepath = "pool1.jpg"
 img = Image.open(filepath)
+width, height = img.size
+img = img.resize((width//30, height//30))
 img_matrix = np.asarray(img)
 
 intensity_matrix = []
@@ -26,3 +28,8 @@ for r in intensity_matrix:
         ascii_row.append(ASCII_CHARS[int( c / MAX_PIXEL_VALUE * ASCII_LEN)])
     ascii_matrix.append(ascii_row)
 
+for r in ascii_matrix:
+    row = ""
+    for c in r:
+        row += (str(c) + str(c))
+    print(row)
